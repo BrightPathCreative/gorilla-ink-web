@@ -11,6 +11,7 @@ import { LocalBusinessJsonLd } from "@/components/LocalBusinessJsonLd";
 import { FAQJsonLd } from "@/components/FAQJsonLd";
 import { FAQSection } from "@/components/FAQSection";
 import { AnimatedDiv, AnimatedSection } from "@/components/AnimatedSection";
+import { SectionDripBar } from "@/components/SectionDripBar";
 
 export default function Home() {
   return (
@@ -31,10 +32,13 @@ export default function Home() {
         </AnimatedDiv>
         <AnimatedSection
           id="gallery"
-          className="scroll-mt-24 bg-black px-4 pt-16 pb-3 md:px-6 md:pt-24 md:pb-5"
+          className="scroll-mt-24 bg-black px-4 pb-3 pt-0 md:px-6 md:pb-5 md:pt-0"
         >
-          <div className="mx-auto max-w-6xl">
-            <h2 className="font-heading text-center text-4xl tracking-tight text-white md:text-5xl">Studio Showcase</h2>
+          <SectionDripBar gradientTo="to-black" />
+          <div className="mx-auto max-w-6xl pt-10 md:pt-14">
+            <h2 className="font-heading text-center text-4xl tracking-[0.04em] text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.08)] md:text-5xl md:tracking-[0.06em]">
+              Studio Showcase
+            </h2>
             <p className="mx-auto mt-4 max-w-2xl text-center text-[#E5E5E5]">
               A dynamic look at our recent masterpieces across all styles.
             </p>

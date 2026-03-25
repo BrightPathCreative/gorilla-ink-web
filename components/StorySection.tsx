@@ -1,23 +1,25 @@
 import Image from "next/image";
 import { ShieldFrame } from "@/components/ShieldFrame";
+import { SectionDripBar } from "@/components/SectionDripBar";
 
 export function StorySection() {
   return (
     <section
       id="story"
-      className="scroll-mt-24 border-y border-white/10 bg-zinc-950 px-4 py-16 md:px-6 md:py-20"
+      className="scroll-mt-24 border-y border-white/10 bg-zinc-950 px-4 pb-16 pt-0 md:px-6 md:pb-20"
     >
+      <SectionDripBar gradientTo="to-zinc-950" />
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/45">Our story</p>
-          <h2 className="font-heading mt-3 text-4xl tracking-tight text-white md:text-5xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/45">Our story</p>
+          <h2 className="font-heading mt-3 text-4xl tracking-[0.04em] text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.08)] md:text-5xl md:tracking-[0.06em]">
             Two decades of ink in Melbourne
           </h2>
         </div>
 
         <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
           <figure className="mx-auto w-full max-w-[15rem] shrink-0 lg:mx-0 lg:w-[min(15rem,34%)] lg:max-w-[240px]">
-            <ShieldFrame variant="blue" className="w-full">
+            <ShieldFrame variant="lime" className="w-full">
               <div className="relative aspect-[4/5] w-full">
                 <Image
                   src="/mario.jpg"

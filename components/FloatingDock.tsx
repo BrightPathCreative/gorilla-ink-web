@@ -25,7 +25,7 @@ export function FloatingDock() {
           className="group flex min-w-0 flex-col items-center gap-0.5 rounded-full px-2.5 py-1.5 text-[0.65rem] font-bold uppercase tracking-wider text-zinc-500 transition hover:bg-white/5 hover:text-gorilla-yellow md:px-3 md:py-2 md:text-xs"
         >
           <Icon
-            className="h-4 w-4 shrink-0 text-zinc-400 transition group-hover:scale-110 group-hover:text-gorilla-blue md:h-5 md:w-5"
+            className="h-4 w-4 shrink-0 text-zinc-400 transition group-hover:scale-110 group-hover:text-gorilla-magenta md:h-5 md:w-5"
             aria-hidden
           />
           <span className="max-w-[3.5rem] truncate md:max-w-none">{label}</span>

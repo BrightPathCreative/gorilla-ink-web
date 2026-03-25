@@ -1,16 +1,20 @@
 import { BookingFormMock } from "@/components/BookingFormMock";
+import { SectionDripBar } from "@/components/SectionDripBar";
 
 const embedUrl = process.env.NEXT_PUBLIC_GHL_FORM_EMBED_URL;
 
 export function GHLBooking() {
   return (
-    <section id="booking" className="scroll-mt-24 border-t border-white/10 bg-zinc-950 px-4 py-20 md:px-6">
-      <div className="mx-auto max-w-3xl">
-        <h2 className="font-heading text-center text-4xl tracking-tight text-white md:text-5xl">Reserve time</h2>
+    <section id="booking" className="scroll-mt-24 border-t border-white/10 bg-zinc-950 px-4 pb-20 pt-0 md:px-6">
+      <SectionDripBar gradientTo="to-zinc-950" />
+      <div className="mx-auto max-w-3xl pt-12 md:pt-16">
+        <h2 className="font-heading text-center text-4xl tracking-[0.04em] text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.08)] md:text-5xl md:tracking-[0.06em]">
+          Reserve time
+        </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-[#b5b5b5]">
           Send your details and we&apos;ll reply to confirm your session.
         </p>
-        <div className="mt-10 min-h-[480px] overflow-hidden rounded-lg border border-white/10 bg-black/40">
+        <div className="gorilla-place-card mt-10 min-h-[480px] overflow-hidden rounded-lg p-0">
           {embedUrl ? (
             <iframe
               title="Gorilla Ink appointment request form"

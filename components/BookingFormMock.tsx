@@ -45,7 +45,7 @@ export function BookingFormMock() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-lg border border-gorilla-blue/40 bg-black/60 px-6 py-16 text-center">
+      <div className="rounded-lg border border-gorilla-magenta/40 bg-black/60 px-6 py-16 text-center">
         <p className="font-heading text-2xl text-white">Thanks, we&apos;ve got your details.</p>
         <p className="mt-3 text-[#E5E5E5]">
           This is a preview form. When your GHL form is connected, submissions will go straight to your pipeline.
@@ -66,7 +66,7 @@ export function BookingFormMock() {
             name="name"
             required
             autoComplete="name"
-            className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none focus:ring-2 focus:ring-gorilla-blue"
+            className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none focus:ring-2 focus:ring-gorilla-magenta"
           />
         </label>
         <label className="block text-sm font-medium text-[#E5E5E5]">
@@ -76,7 +76,7 @@ export function BookingFormMock() {
             type="tel"
             required
             autoComplete="tel"
-            className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none focus:ring-2 focus:ring-gorilla-blue"
+            className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none focus:ring-2 focus:ring-gorilla-magenta"
           />
         </label>
       </div>
@@ -87,7 +87,7 @@ export function BookingFormMock() {
           type="email"
           required
           autoComplete="email"
-          className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none focus:ring-2 focus:ring-gorilla-blue"
+          className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none focus:ring-2 focus:ring-gorilla-magenta"
         />
       </label>
       <label className="block text-sm font-medium text-[#E5E5E5]">
@@ -112,7 +112,7 @@ export function BookingFormMock() {
           <input
             name="placement"
             placeholder="e.g. upper arm, back"
-            className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-blue"
+            className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-magenta"
           />
         </label>
       </div>
@@ -121,7 +121,7 @@ export function BookingFormMock() {
         <input
           name="size"
           placeholder="e.g. palm-sized, half sleeve"
-          className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-blue"
+          className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-magenta"
         />
       </label>
       <label className="block text-sm font-medium text-[#E5E5E5]">
@@ -129,7 +129,7 @@ export function BookingFormMock() {
         <textarea
           name="references"
           rows={2}
-          className="mt-1.5 w-full resize-y rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-blue"
+          className="mt-1.5 w-full resize-y rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-magenta"
           placeholder="Paste URLs or @handles"
         />
       </label>
@@ -138,7 +138,7 @@ export function BookingFormMock() {
         <input
           name="availability"
           placeholder="e.g. weekday afternoons, Saturdays"
-          className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-blue"
+          className="mt-1.5 w-full rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-magenta"
         />
       </label>
       <label className="block text-sm font-medium text-[#E5E5E5]">
@@ -146,13 +146,13 @@ export function BookingFormMock() {
         <textarea
           name="message"
           rows={4}
-          className="mt-1.5 w-full resize-y rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-blue"
+          className="mt-1.5 w-full resize-y rounded border border-white/15 bg-black/60 px-3 py-2.5 text-white outline-none placeholder:text-white/35 focus:ring-2 focus:ring-gorilla-magenta"
           placeholder="Cover-up, pain concerns, budget range…"
         />
       </label>
       <button
         type="submit"
-        className="w-full rounded-sm bg-gorilla-blue py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-[0_0_24px_rgba(0,0,255,0.45)] transition hover:bg-[#2222ff]"
+        className="w-full rounded-sm bg-gorilla-magenta py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-[0_0_24px_rgba(251,5,247,0.45)] transition hover:bg-[#ff3afc]"
       >
         Send request
       </button>

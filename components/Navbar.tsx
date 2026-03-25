@@ -15,7 +15,7 @@ export function Navbar() {
         aria-label="Gorilla Ink, home"
       >
         <Image
-          src="/gorilla-logo.jpg"
+          src="/gorilla-ink-logo.svg"
           alt=""
           fill
           sizes="64px"
@@ -25,7 +25,7 @@ export function Navbar() {
       </Link>
       <Link
         href="/#booking"
-        className="rounded-md border border-white/15 bg-gorilla-blue px-5 py-2.5 text-sm font-black uppercase tracking-wider text-white shadow-[0_0_22px_rgba(0,0,255,0.35)] transition hover:scale-[1.02] hover:bg-[#2222ff] md:px-7 md:py-3 md:text-base"
+        className="rounded-md border border-white/15 bg-gorilla-magenta px-5 py-2.5 text-sm font-black uppercase tracking-wider text-white shadow-[0_0_22px_rgba(251,5,247,0.4)] transition hover:scale-[1.02] hover:bg-[#ff3afc] md:px-7 md:py-3 md:text-base"
       >
         Reserve time
       </Link>

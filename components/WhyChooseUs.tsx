@@ -1,4 +1,5 @@
 import { ShieldCheck, Sparkles, Users, Wrench } from "lucide-react";
+import { SectionDripBar } from "@/components/SectionDripBar";
 
 const points: { title: string; description: string; Icon: typeof Users }[] = [
   {
@@ -26,13 +27,17 @@ const points: { title: string; description: string; Icon: typeof Users }[] = [
 export function WhyChooseUs() {
   return (
     <section
-      className="border-b border-white/10 bg-zinc-950 px-4 py-14 md:px-6 md:py-20"
+      className="border-b border-white/10 bg-zinc-950 px-4 pb-14 pt-0 md:px-6 md:pb-20"
       aria-labelledby="why-choose-heading"
     >
+      <SectionDripBar gradientTo="to-zinc-950" />
       <div className="mx-auto max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white/45">Why Gorilla Ink</p>
-          <h2 id="why-choose-heading" className="font-heading mt-3 text-4xl tracking-tight text-white md:text-5xl">
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/45">Why Gorilla Ink</p>
+          <h2
+            id="why-choose-heading"
+            className="font-heading mt-3 text-4xl tracking-[0.04em] text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.08)] md:text-5xl md:tracking-[0.06em]"
+          >
             Why Choose Us
           </h2>
           <p className="mt-4 text-lg text-[#a3a3a3]">
@@ -42,11 +47,8 @@ export function WhyChooseUs() {
 
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {points.map(({ title, description, Icon }) => (
-            <li
-              key={title}
-              className="rounded-lg border border-white/10 bg-black/50 p-6 shadow-[0_0_28px_rgba(0,0,0,0.45)] transition hover:border-white/20 hover:shadow-[0_0_32px_rgba(0,0,255,0.08)]"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-md border border-gorilla-blue/40 bg-gorilla-blue/10 text-gorilla-blue">
+            <li key={title} className="gorilla-place-card p-6 hover:-translate-y-0.5">
+              <div className="flex h-11 w-11 items-center justify-center rounded-md border border-gorilla-lime/50 bg-gorilla-lime/10 text-gorilla-lime">
                 <Icon className="h-5 w-5" strokeWidth={2} aria-hidden />
               </div>
               <h3 className="font-heading mt-4 text-xl tracking-wide text-white">{title}</h3>

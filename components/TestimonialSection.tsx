@@ -1,14 +1,16 @@
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { ShieldFrame } from "@/components/ShieldFrame";
+import { SectionDripBar } from "@/components/SectionDripBar";
 
 export function TestimonialSection() {
   return (
     <section
       id="testimonials"
-      className="scroll-mt-24 border-b border-white/10 bg-[#060606] px-4 py-12 md:px-6 md:py-16 lg:py-20"
+      className="scroll-mt-24 border-b border-white/10 bg-[#060606] px-4 pb-12 pt-0 md:px-6 md:pb-16 lg:pb-20"
       aria-labelledby="testimonial-heading"
     >
+      <SectionDripBar gradientTo="to-[#060606]" />
       <div className="relative mx-auto max-w-7xl">
         <div
           className="pointer-events-none absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-white/[0.04] blur-[100px] md:h-96 md:w-96"
@@ -21,7 +23,7 @@ export function TestimonialSection() {
 
         <div className="relative grid min-w-0 gap-10 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-12 lg:items-start">
           <figure className="group relative order-2 mx-auto w-full min-w-0 max-w-[280px] sm:max-w-[300px] lg:order-1 lg:mx-0 lg:max-w-[min(100%,320px)]">
-            <ShieldFrame variant="pink" className="w-full">
+            <ShieldFrame variant="magenta" className="w-full">
               <div className="relative aspect-[4/5] w-full sm:aspect-[16/11] lg:aspect-[4/5]">
                 <Image
                   src="/testimonialimage.png"
@@ -51,7 +53,7 @@ export function TestimonialSection() {
 
             <h2
               id="testimonial-heading"
-              className="font-heading mt-4 text-4xl leading-[0.95] tracking-tight text-white md:text-5xl"
+              className="font-heading mt-4 text-4xl leading-[0.95] tracking-[0.04em] text-white drop-shadow-[0_0_40px_rgba(255,255,255,0.08)] md:text-5xl md:tracking-[0.06em]"
             >
               What people say
             </h2>

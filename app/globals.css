@@ -3,21 +3,24 @@
 :root {
   --background: #000000;
   --foreground: #ffffff;
-  /* Logo yellow — single hex; all UI yellow + glows derive from these channels */
-  --gorilla-yellow: #ffff00;
-  --gorilla-yellow-rgb: 255 255 0;
-  --gorilla-yellow-rgb-comma: 255, 255, 0;
+  /* Brand triad + neutrals only */
+  --gorilla-magenta: #fb05f7;
+  --gorilla-yellow: #f5f21d;
+  --gorilla-lime: #80f20f;
+  --gorilla-magenta-rgb: 251 5 247;
+  --gorilla-yellow-rgb: 245 242 29;
+  --gorilla-lime-rgb: 128 242 15;
+  --gorilla-yellow-rgb-comma: 245, 242, 29;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  /* Core brand: pink, yellow, blue, black (no purple / no green) */
-  --color-gorilla-pink: #ff2d78;
-  --color-gorilla-yellow: var(--gorilla-yellow);
-  --color-gorilla-blue: #0000ff;
-  /* Alias for legacy class names → yellow */
-  --color-gorilla-lime: var(--gorilla-yellow);
+  --color-gorilla-magenta: #fb05f7;
+  --color-gorilla-yellow: #f5f21d;
+  --color-gorilla-lime: #80f20f;
+  /* Back-compat: pink → magenta */
+  --color-gorilla-pink: #fb05f7;
   --color-gorilla-black: #000000;
   --color-gorilla-muted: #e5e5e5;
   --font-sans: var(--font-inter);
@@ -28,10 +31,111 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+/* Film grain / noise (reference-style), 5% — sits above content, no pointer capture */
+.site-noise {
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+::selection {
+  background-color: rgb(var(--gorilla-yellow-rgb) / 0.45);
+  color: #0a0a0a;
+}
+
+/* Custom scrollbar — yellow thumb on hover (WebKit + Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2a2a2a #0a0a0a;
+}
+
+*::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--gorilla-yellow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-x,
+  .animate-cursor-ping {
+    animation: none !important;
+  }
+}
+
+@keyframes marquee-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-x {
+  animation: marquee-x 20s linear infinite;
+}
+
+@keyframes cursor-ping {
+  75%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.animate-cursor-ping {
+  animation: cursor-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Placecard / panel — stronger rim light + depth (reference-style) */
+.gorilla-place-card {
+  border-radius: 0.5rem;
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background: rgb(0 0 0 / 0.55);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.04) inset,
+    0 24px 48px rgb(0 0 0 / 0.55),
+    0 0 40px rgb(var(--gorilla-magenta-rgb) / 0.08),
+    0 0 28px rgb(var(--gorilla-lime-rgb) / 0.06);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.gorilla-place-card:hover {
+  border-color: rgb(255 255 255 / 0.2);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.06) inset,
+    0 28px 56px rgb(0 0 0 / 0.6),
+    0 0 48px rgb(var(--gorilla-magenta-rgb) / 0.14),
+    0 0 36px rgb(var(--gorilla-yellow-rgb) / 0.1);
 }
 
 .font-heading {
@@ -69,6 +173,17 @@ body {
     88% 6px 14px -2px rgb(var(--gorilla-yellow-rgb) / 0.35);
 }
 
+/* Hero headline blend — reference-style glow on top of photography */
+.hero-mix-blend {
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-mix-blend {
+    mix-blend-mode: normal;
+  }
+}
+
 .hero-word-gorilla {
   color: var(--gorilla-yellow);
   letter-spacing: 0.04em;
@@ -91,10 +206,10 @@ body {
   text-shadow:
     0 0 8px rgb(var(--gorilla-yellow-rgb) / 0.9),
     0 0 20px rgb(var(--gorilla-yellow-rgb) / 0.55),
-    0 1px 0 #ee0,
-    0 2px 0 #cc0,
+    0 1px 0 #d4ce18,
+    0 2px 0 #a8a215,
     0 3px 1px rgba(0, 0, 0, 0.5),
-    0 0 1px rgba(255, 45, 120, 0.55),
+    0 0 1px rgb(var(--gorilla-magenta-rgb) / 0.55),
     0 6px 18px rgb(var(--gorilla-yellow-rgb) / 0.3);
   animation: hero-neon-drip-pulse 3.2s ease-in-out infinite 0.15s;
 }
@@ -115,12 +230,12 @@ body {
   100% {
     box-shadow:
       0 0 28px rgb(var(--gorilla-yellow-rgb) / 0.45),
-      0 0 32px rgba(0, 0, 255, 0.45);
+      0 0 32px rgb(var(--gorilla-magenta-rgb) / 0.4);
   }
   50% {
     box-shadow:
       0 0 40px rgb(var(--gorilla-yellow-rgb) / 0.65),
-      0 0 44px rgba(0, 0, 255, 0.6);
+      0 0 44px rgb(var(--gorilla-magenta-rgb) / 0.55);
   }
 }
 

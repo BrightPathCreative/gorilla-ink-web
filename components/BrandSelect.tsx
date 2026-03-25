@@ -78,9 +78,9 @@ export function BrandSelect({
         aria-required={required}
         aria-describedby={error ? `${id}-err` : undefined}
         onClick={() => setOpen((o) => !o)}
-        className={`flex w-full items-center justify-between gap-2 rounded border bg-black/60 px-3 py-2.5 text-left font-sans text-sm text-white outline-none transition focus-visible:ring-2 focus-visible:ring-gorilla-blue ${
-          error ? "border-gorilla-pink/70" : "border-white/15"
-        } ${open ? "border-gorilla-blue/60 ring-1 ring-gorilla-blue/40" : ""}`}
+        className={`flex w-full items-center justify-between gap-2 rounded border bg-black/60 px-3 py-2.5 text-left font-sans text-sm text-white outline-none transition focus-visible:ring-2 focus-visible:ring-gorilla-magenta ${
+          error ? "border-gorilla-magenta/70" : "border-white/15"
+        } ${open ? "border-gorilla-magenta/60 ring-1 ring-gorilla-magenta/40" : ""}`}
       >
         <span className={showPlaceholder ? "text-white/40" : undefined}>
           {showPlaceholder ? placeholder : displayLabel}
@@ -95,7 +95,7 @@ export function BrandSelect({
           id={listId}
           role="listbox"
           aria-labelledby={`${id}-trigger`}
-          className="absolute z-[100] mt-1 max-h-60 w-full overflow-y-auto rounded border border-gorilla-blue/45 bg-[#0a0a0a]/98 py-1 font-sans text-sm shadow-[0_0_24px_rgba(0,0,255,0.35),0_12px_40px_rgba(0,0,0,0.85)] backdrop-blur-md"
+          className="absolute z-[100] mt-1 max-h-60 w-full overflow-y-auto rounded border border-gorilla-magenta/45 bg-[#0a0a0a]/98 py-1 font-sans text-sm shadow-[0_0_24px_rgba(251,5,247,0.35),0_12px_40px_rgba(0,0,0,0.85)] backdrop-blur-md"
         >
           {options.map((opt) => {
             const isSelected = value === opt.value;
@@ -106,8 +106,8 @@ export function BrandSelect({
                   role="option"
                   aria-selected={isSelected}
                   onClick={() => selectOption(opt.value)}
-                  className={`flex w-full items-center px-3 py-2.5 text-left text-white transition hover:bg-gorilla-blue/20 hover:text-gorilla-yellow ${
-                    isSelected ? "bg-gorilla-blue/15 text-gorilla-yellow" : ""
+                  className={`flex w-full items-center px-3 py-2.5 text-left text-white transition hover:bg-gorilla-magenta/20 hover:text-gorilla-yellow ${
+                    isSelected ? "bg-gorilla-magenta/15 text-gorilla-yellow" : ""
                   }`}
                 >
                   {opt.label}
@@ -118,7 +118,7 @@ export function BrandSelect({
         </ul>
       )}
       {error ? (
-        <p id={`${id}-err`} className="mt-1 text-xs text-gorilla-pink" role="alert">
+        <p id={`${id}-err`} className="mt-1 text-xs text-gorilla-magenta" role="alert">
           {error}
         </p>
       ) : null}

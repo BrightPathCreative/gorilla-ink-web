@@ -1,4 +1,4 @@
-export type ArtistFrame = "blue" | "pink" | "yellow";
+export type ArtistFrame = "magenta" | "lime" | "yellow";
 
 export type PortfolioPiece = {
   src: string;
@@ -18,7 +18,6 @@ export type Artist = {
   instagram: string | null;
   handle: string | null;
   frame: ArtistFrame;
-  /** Tattoo work — swap paths under /public/artists/{slug}/ when you add real shots */
   portfolio: PortfolioPiece[];
 };
 
@@ -33,21 +32,21 @@ export const artists: Artist[] = [
     bio: "20+ years experience. Combines technical skill with artistic intuition for powerful statement pieces.",
     instagram: "https://www.instagram.com/tattsbymarz/",
     handle: "@tattsbymarz",
-    frame: "blue",
+    frame: "magenta",
     portfolio: [
       {
-        src: "/hero-tattoo-mockup.png",
+        src: "/gallery/dragonrose.jpg",
         alt: "Black and grey realism tattoo by Marz Del Toro",
         caption: "Black & grey realism",
       },
       {
-        src: "/testimonial-backpiece-studio.png",
-        alt: "Large back piece tattoo, Gorilla Ink studio",
-        caption: "Back piece in progress",
+        src: "/gallery/FullSizeRender.jpg",
+        alt: "Large sleeve tattoo, Gorilla Ink studio",
+        caption: "Sleeve work",
       },
       {
-        src: "/showcase-placeholder-b.png",
-        alt: "Japanese style tattoo sleeve detail",
+        src: "/gallery/master.jpg",
+        alt: "Japanese style tattoo detail",
         caption: "Japanese / oriental",
       },
       {
@@ -56,9 +55,9 @@ export const artists: Artist[] = [
         caption: "Custom composition",
       },
       {
-        src: "/GorillaInk.png",
-        alt: "Studio atmosphere and tattoo work at Gorilla Ink",
-        caption: "Studio work",
+        src: "/gallery/studio.jpg",
+        alt: "Studio session at Gorilla Ink",
+        caption: "In the studio",
       },
     ],
   },
@@ -72,27 +71,27 @@ export const artists: Artist[] = [
     bio: "Known for exquisite detail and transforming client ideas into delicate, lasting personalized art.",
     instagram: null,
     handle: null,
-    frame: "pink",
+    frame: "lime",
     portfolio: [
       {
-        src: "/artist-anastasia.jpg",
+        src: "/gallery/IMG_5401.jpg",
         alt: "Fine line floral tattoo by Anastasia Rallis",
         caption: "Fine line & floral",
       },
       {
-        src: "/showcase-placeholder-b.png",
-        alt: "Delicate linework tattoo",
-        caption: "Linework detail",
+        src: "/gallery/girl.jpg",
+        alt: "Delicate portrait-style tattoo",
+        caption: "Detail work",
       },
       {
-        src: "/hero-tattoo-mockup.png",
-        alt: "Blackwork and ornamental tattoo",
-        caption: "Blackwork",
+        src: "/gallery/fun.jpg",
+        alt: "Colour tattoo piece",
+        caption: "Colour",
       },
       {
-        src: "/testimonialimage.png",
-        alt: "Tattoo piece by Anastasia Rallis",
-        caption: "Custom piece",
+        src: "/gallery/catholic.jpg",
+        alt: "Custom linework tattoo",
+        caption: "Linework",
       },
     ],
   },
@@ -109,22 +108,22 @@ export const artists: Artist[] = [
     frame: "yellow",
     portfolio: [
       {
-        src: "/artist-pablo.jpg",
+        src: "/gallery/beast.jpg",
         alt: "Black work tattoo by Pablo Montana",
         caption: "Black work",
       },
       {
-        src: "/hero-tattoo-mockup.png",
+        src: "/gallery/2024-05-06.jpg",
         alt: "Fine line tattoo composition",
         caption: "Fine line",
       },
       {
-        src: "/showcase-placeholder-b.png",
-        alt: "Solid black ornamental tattoo",
+        src: "/gallery/2024-055-06.jpg",
+        alt: "Ornamental black tattoo",
         caption: "Ornamental",
       },
       {
-        src: "/testimonial-backpiece-studio.png",
+        src: "/gallery/chatgpt-studio.png",
         alt: "Large scale black work",
         caption: "Large scale",
       },

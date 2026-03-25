@@ -7,7 +7,7 @@ export function LocalBusinessJsonLd() {
     name: "Gorilla Ink Tattoo Studio",
     description:
       "Tattoo studio in Oakleigh, Melbourne specializing in black and grey, fine line, and Japanese tattoo art.",
-    ...(siteUrl ? { url: siteUrl, image: `${siteUrl.replace(/\/$/, "")}/gorilla-logo.jpg` } : {}),
+    ...(siteUrl ? { url: siteUrl, image: `${siteUrl.replace(/\/$/, "")}/gorilla-ink-logo.svg` } : {}),
     telephone: ["+61399961567", "+61413888773"],
     email: "info.gorillaink@gmail.com",
     sameAs: [

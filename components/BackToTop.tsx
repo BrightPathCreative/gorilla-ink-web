@@ -81,7 +81,7 @@ export function BackToTop() {
         type="button"
         onClick={goTop}
         aria-label={`Back to top — ${pct}% of page scrolled`}
-        className="pointer-events-auto relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-black/90 text-gorilla-yellow shadow-[0_0_20px_rgba(255,255,255,0.08)] backdrop-blur-md transition hover:border-white/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gorilla-blue md:h-14 md:w-14"
+        className="pointer-events-auto relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-black/90 text-gorilla-yellow shadow-[0_0_20px_rgba(255,255,255,0.08)] backdrop-blur-md transition hover:border-white/40 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gorilla-magenta md:h-14 md:w-14"
       >
         <ChevronUp className="h-6 w-6 md:h-7 md:w-7" aria-hidden />
       </button>

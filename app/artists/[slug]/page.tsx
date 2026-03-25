@@ -23,13 +23,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${artist.name} | Gorilla Ink`,
       description: artist.specialties,
+      images: [
+        {
+          url: "/gorilla-ink-logo.svg",
+          width: 1500,
+          height: 1500,
+          alt: "Gorilla Ink Tattoo Studio",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary",
+      title: `${artist.name} | Gorilla Ink`,
+      description: artist.specialties,
+      images: ["/gorilla-ink-logo.svg"],
     },
   };
 }
 
 const frameBorder: Record<string, string> = {
-  blue: "border-gorilla-blue shadow-[0_0_32px_rgba(0,0,255,0.35)]",
-  pink: "border-gorilla-pink shadow-[0_0_32px_rgba(255,45,120,0.35)]",
+  magenta: "border-gorilla-magenta shadow-[0_0_32px_rgba(251,5,247,0.35)]",
+  lime: "border-gorilla-lime shadow-[0_0_32px_rgba(128,242,15,0.35)]",
   yellow:
     "border-gorilla-yellow shadow-[0_0_32px_rgb(var(--gorilla-yellow-rgb)_/_0.35)]",
 };
@@ -61,7 +75,7 @@ export default async function ArtistPage({ params }: Props) {
 
         <header className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
           <div
-            className={`relative mx-auto aspect-[4/5] w-full max-w-[320px] shrink-0 overflow-hidden rounded-lg border-2 bg-zinc-950 lg:mx-0 lg:w-[min(100%,280px)] ${frameBorder[artist.frame] ?? frameBorder.blue}`}
+            className={`relative mx-auto aspect-[4/5] w-full max-w-[320px] shrink-0 overflow-hidden rounded-lg border-2 bg-zinc-950 lg:mx-0 lg:w-[min(100%,280px)] ${frameBorder[artist.frame] ?? frameBorder.magenta}`}
           >
             <Image
               src={artist.image}
@@ -77,7 +91,7 @@ export default async function ArtistPage({ params }: Props) {
               Gorilla Ink artist
             </p>
             <h1 className="font-heading mt-2 text-4xl tracking-tight text-white md:text-5xl lg:text-6xl">{artist.name}</h1>
-            <p className="mt-2 text-sm font-medium uppercase tracking-wider text-gorilla-pink">{artist.role}</p>
+            <p className="mt-2 text-sm font-medium uppercase tracking-wider text-gorilla-magenta">{artist.role}</p>
             <p className="mt-4 text-base text-gorilla-yellow/90 md:text-lg">{artist.specialties}</p>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[#d4d4d4]">{artist.bio}</p>
             {artist.instagram && (
@@ -85,7 +99,7 @@ export default async function ArtistPage({ params }: Props) {
                 href={artist.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-8 inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/[0.04] px-4 py-2.5 text-sm font-semibold text-white transition hover:border-gorilla-pink/50 hover:text-gorilla-pink"
+                className="mt-8 inline-flex items-center gap-2 rounded-md border border-white/15 bg-white/[0.04] px-4 py-2.5 text-sm font-semibold text-white transition hover:border-gorilla-magenta/50 hover:text-gorilla-magenta"
               >
                 <InstagramIcon className="h-5 w-5" />
                 {artist.handle ?? "Instagram"}
@@ -94,7 +108,7 @@ export default async function ArtistPage({ params }: Props) {
             <div className="mt-10">
               <Link
                 href="/#booking"
-                className="inline-flex rounded-md bg-gorilla-blue px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-[0_0_22px_rgba(0,0,255,0.35)] transition hover:bg-[#2222ff] md:text-base"
+                className="inline-flex rounded-md bg-gorilla-magenta px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-[0_0_22px_rgba(251,5,247,0.4)] transition hover:bg-[#ff3afc] md:text-base"
               >
                 Reserve time
               </Link>
@@ -136,7 +150,7 @@ export default async function ArtistPage({ params }: Props) {
         </section>
 
         <p className="mt-12 text-center text-sm text-white/45">
-          <Link href="/#artists" className="text-gorilla-blue underline-offset-4 transition hover:text-white hover:underline">
+          <Link href="/#artists" className="text-gorilla-magenta underline-offset-4 transition hover:text-gorilla-lime hover:underline">
             ← All artists
           </Link>
         </p>
