@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gorilla Ink Tattoo Studio — Website
 
-## Getting Started
+Next.js (App Router) site for [Gorilla Ink](https://www.instagram.com/gorillaink.tattoos/) — Oakleigh & Hughesdale, Melbourne.
 
-First, run the development server:
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copy `.env.example` to `.env.local` and fill in values:
 
-## Learn More
+| Variable | Purpose |
+|----------|---------|
+| `NEXT_PUBLIC_SITE_URL` | Canonical site URL (no trailing slash) — used for JSON-LD / Open Graph when set |
+| `NEXT_PUBLIC_GHL_FORM_EMBED_URL` | GoHighLevel booking iframe `src` URL; if unset, a mock form is shown |
 
-To learn more about Next.js, take a look at the following resources:
+On **Vercel**, add these under Project → Settings → Environment Variables (Production / Preview as needed).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy: GitHub + Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Push this repo to GitHub** (see below if you have not created the remote yet).
+2. Log in to [vercel.com](https://vercel.com) → **Add New…** → **Project** → **Import** your GitHub repository.
+3. Framework preset: **Next.js**. Root directory: **.** (this project is the repo root).
+4. Add the environment variables from `.env.example`, then **Deploy**.
 
-## Deploy on Vercel
+Production URL will look like `https://<project>.vercel.app`; you can add a custom domain under Project → **Domains**.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### First-time GitHub push
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If there is no `origin` yet, create an empty repository on GitHub (no README), then:
+
+```bash
+git remote add origin https://github.com/<YOUR_USER>/<YOUR_REPO>.git
+git branch -M main
+git push -u origin main
+```
+
+Or with [GitHub CLI](https://cli.github.com/) (`gh auth login` once):
+
+```bash
+gh repo create <YOUR_REPO> --public --source=. --remote=origin --push
+```
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Development server |
+| `npm run build` | Production build |
+| `npm run start` | Run production build locally |
+| `npm run lint` | ESLint |
