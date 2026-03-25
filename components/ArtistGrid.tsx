@@ -13,6 +13,34 @@ const ARTICLE_FRAME: Record<ArtistFrame, string> = {
     "border-gorilla-yellow shadow-[0_0_32px_rgb(var(--gorilla-yellow-rgb)_/_0.42),0_0_18px_rgb(var(--gorilla-yellow-rgb)_/_0.24)]",
 };
 
+/** Text accents aligned to each artist’s frame colour */
+const ARTICLE_ACCENT: Record<
+  ArtistFrame,
+  { nameHover: string; role: string; cta: string; instaHover: string; focusRing: string }
+> = {
+  magenta: {
+    nameHover: "group-hover:text-gorilla-magenta",
+    role: "text-gorilla-magenta",
+    cta: "text-gorilla-magenta",
+    instaHover: "hover:text-gorilla-magenta",
+    focusRing: "focus-visible:ring-gorilla-magenta",
+  },
+  lime: {
+    nameHover: "group-hover:text-gorilla-lime",
+    role: "text-gorilla-lime",
+    cta: "text-gorilla-lime",
+    instaHover: "hover:text-gorilla-lime",
+    focusRing: "focus-visible:ring-gorilla-lime",
+  },
+  yellow: {
+    nameHover: "group-hover:text-gorilla-yellow",
+    role: "text-gorilla-yellow",
+    cta: "text-gorilla-yellow",
+    instaHover: "hover:text-gorilla-yellow",
+    focusRing: "focus-visible:ring-gorilla-yellow",
+  },
+};
+
 export function ArtistGrid() {
   return (
     <section id="artists" className="scroll-mt-24 bg-black px-4 pb-20 pt-0 md:px-6">
@@ -25,14 +53,16 @@ export function ArtistGrid() {
           Our team brings years of experience and distinct styles to every piece.
         </p>
         <div className="mt-14 grid gap-10 md:grid-cols-3">
-          {artists.map((artist) => (
+          {artists.map((artist) => {
+            const accent = ARTICLE_ACCENT[artist.frame];
+            return (
             <article
               key={artist.slug}
               className={`flex flex-col overflow-hidden rounded-lg border-2 bg-zinc-950/80 ${ARTICLE_FRAME[artist.frame]}`}
             >
               <Link
                 href={`/artists/${artist.slug}`}
-                className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-gorilla-magenta focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                className={`group block focus:outline-none focus-visible:ring-2 ${accent.focusRing} focus-visible:ring-offset-2 focus-visible:ring-offset-black`}
               >
                 <div className="relative aspect-[4/5] w-full">
                   <Image
@@ -44,13 +74,13 @@ export function ArtistGrid() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="font-heading text-2xl text-white transition group-hover:text-gorilla-magenta">
+                  <h3 className={`font-heading text-2xl text-white transition ${accent.nameHover}`}>
                     {artist.name}
                   </h3>
-                  <p className="mt-1 text-sm font-medium uppercase tracking-wider text-gorilla-magenta">{artist.role}</p>
-                  <p className="mt-3 text-sm text-gorilla-yellow/90">{artist.specialties}</p>
+                  <p className={`mt-1 text-sm font-medium uppercase tracking-wider ${accent.role}`}>{artist.role}</p>
+                  <p className="mt-3 text-sm text-white/80">{artist.specialties}</p>
                   <p className="mt-4 text-sm leading-relaxed text-[#E5E5E5]">{artist.bio}</p>
-                  <p className="mt-4 text-sm font-semibold text-gorilla-lime">View portfolio →</p>
+                  <p className={`mt-4 text-sm font-semibold ${accent.cta}`}>View portfolio →</p>
                 </div>
               </Link>
               {artist.instagram && (
@@ -59,7 +89,7 @@ export function ArtistGrid() {
                     href={artist.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm text-white transition hover:text-gorilla-magenta"
+                    className={`inline-flex items-center gap-2 text-sm text-white transition ${accent.instaHover}`}
                   >
                     <InstagramIcon className="h-4 w-4" />
                     {artist.handle}
@@ -67,7 +97,8 @@ export function ArtistGrid() {
                 </div>
               )}
             </article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

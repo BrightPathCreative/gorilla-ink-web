@@ -14,22 +14,27 @@ export function FAQSection() {
           Prep, aftercare, consults, and what a session feels like. Ask anything when you reserve.
         </p>
 
-        <div className="mt-12 space-y-2">
-          {faqItems.map((item) => (
+        <div className="mt-12 divide-y divide-white/10">
+          {faqItems.map((item, index) => (
             <details
               key={item.question}
-              className="gorilla-place-card group open:border-gorilla-magenta/50 open:shadow-[0_0_24px_rgba(251,5,247,0.18)]"
+              className="group border-0 bg-transparent [&:not(:first-child)]:mt-0"
             >
-              <summary className="cursor-pointer list-none px-5 py-4 font-heading text-lg tracking-wide text-white transition marker:content-none hover:text-gorilla-lime [&::-webkit-details-marker]:hidden">
+              <summary className="cursor-pointer list-none py-5 font-heading text-xl uppercase leading-snug tracking-[0.06em] text-white transition marker:content-none hover:text-gorilla-lime md:text-2xl md:tracking-[0.07em] [&::-webkit-details-marker]:hidden">
                 <span className="flex items-start justify-between gap-4">
-                  <span>{item.question}</span>
-                  <span className="shrink-0 text-white/40 transition group-open:rotate-45 group-open:text-gorilla-yellow">
-                    +
+                  <span>
+                    <span className="text-white/35">{index + 1}.</span> {item.question}
+                  </span>
+                  <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center font-sans text-xl leading-none text-white/50 transition group-open:text-gorilla-lime md:text-2xl">
+                    <span className="group-open:hidden">+</span>
+                    <span className="hidden group-open:inline">×</span>
                   </span>
                 </span>
               </summary>
-              <div className="border-t border-white/5 px-5 pb-5 pt-0">
-                <p className="pt-4 text-base leading-relaxed text-[#E5E5E5]">{item.answer}</p>
+              <div className="pb-6 pl-1 pt-1 md:pl-2">
+                <p className="border-l-4 border-gorilla-lime pl-4 pt-2 font-mono text-sm leading-relaxed text-[#d4d4d4] md:text-[0.95rem]">
+                  {item.answer}
+                </p>
               </div>
             </details>
           ))}

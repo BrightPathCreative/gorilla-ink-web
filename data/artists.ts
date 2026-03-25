@@ -32,7 +32,7 @@ export const artists: Artist[] = [
     bio: "20+ years experience. Combines technical skill with artistic intuition for powerful statement pieces.",
     instagram: "https://www.instagram.com/tattsbymarz/",
     handle: "@tattsbymarz",
-    frame: "magenta",
+    frame: "lime",
     portfolio: [
       {
         src: "/gallery/dragonrose.jpg",
@@ -71,7 +71,7 @@ export const artists: Artist[] = [
     bio: "Known for exquisite detail and transforming client ideas into delicate, lasting personalized art.",
     instagram: null,
     handle: null,
-    frame: "lime",
+    frame: "magenta",
     portfolio: [
       {
         src: "/gallery/IMG_5401.jpg",
