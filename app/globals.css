@@ -83,6 +83,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee-x,
+  .animate-marquee-x-slow,
   .animate-cursor-ping {
     animation: none !important;
   }
@@ -99,6 +100,64 @@ body {
 
 .animate-marquee-x {
   animation: marquee-x 20s linear infinite;
+}
+
+/* ~3× slower than default marquee for hero band */
+.animate-marquee-x-slow {
+  animation: marquee-x 60s linear infinite;
+}
+
+@keyframes testimonial-slide {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.testimonial-slide {
+  animation: testimonial-slide 0.45s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-slide {
+    animation: none;
+  }
+}
+
+@keyframes story-blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.35;
+  }
+  33% {
+    transform: translate(14px, -10px) scale(1.06);
+    opacity: 0.45;
+  }
+  66% {
+    transform: translate(-12px, 12px) scale(0.96);
+    opacity: 0.38;
+  }
+}
+
+.animate-story-blob {
+  animation: story-blob 12s ease-in-out infinite;
+}
+
+.animate-story-blob-delayed {
+  animation: story-blob 14s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-story-blob,
+  .animate-story-blob-delayed {
+    animation: none;
+  }
 }
 
 @keyframes cursor-ping {

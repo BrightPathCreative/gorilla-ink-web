@@ -1,26 +1,20 @@
-/* Ported from CodePen abrOMLY, scoped under .gorilla-carousel-3d */
+/* 3D carousel — drag + idle spin; ground shadows like CodePen reference */
 
 .gorilla-carousel-3d {
   --carousel-transition-duration: 250ms;
   --carousel-transition-ease: ease-out;
   --carousel-bg-color-rgb: 0, 0, 0;
   --carousel-shadow-color-rgb: 128, 128, 128;
-  --carousel-item-width: 11.5rem;
-  --carousel-item-height: 17.5rem;
+  --carousel-item-width: 13rem;
+  --carousel-item-height: 20rem;
   --carousel-item-hover-effect: 1.075;
   --carousel-item-reflection-blur: 0.25rem;
   --carousel-item-empty-color-rgb: 255, 255, 255;
   --carousel-item-glow-color-rgb: 255, 255, 255;
   --carousel-item-glow-size: 5rem;
-  --carousel-diameter: 50rem;
+  --carousel-diameter: 56rem;
   --carousel-3d-perspective: 1000px;
   --carousel-3d-perspective-origin: 50% 20%;
-  --carousel-control-button-width: 1.25rem;
-  --carousel-control-button-height: 4rem;
-  --carousel-control-color-rgb: 255, 255, 255;
-  --carousel-animation-duration: 52s;
-  --carousel-animation-play-state: running;
-  --carousel-direction-animation-play-state: paused;
 }
 
 .gorilla-carousel-3d .carousel {
@@ -32,106 +26,36 @@
   perspective-origin: var(--carousel-3d-perspective-origin);
   width: var(--_diameter);
   height: var(--_diameter);
+  position: relative;
+  user-select: none;
 }
 
 @media only screen and (max-width: 48rem) {
   .gorilla-carousel-3d .carousel {
-    --_diameter: calc(var(--carousel-diameter) * 0.75);
-    --_item-width: calc(var(--carousel-item-width) * 0.75);
-    --_item-height: calc(var(--carousel-item-height) * 0.75);
+    --_diameter: calc(var(--carousel-diameter) * 0.78);
+    --_item-width: calc(var(--carousel-item-width) * 0.78);
+    --_item-height: calc(var(--carousel-item-height) * 0.78);
   }
 }
 
 @media only screen and (max-width: 32rem) {
   .gorilla-carousel-3d .carousel {
-    --_diameter: calc(var(--carousel-diameter) * 0.6);
-    --_item-width: calc(var(--carousel-item-width) * 0.6);
-    --_item-height: calc(var(--carousel-item-height) * 0.6);
+    --_diameter: calc(var(--carousel-diameter) * 0.62);
+    --_item-width: calc(var(--carousel-item-width) * 0.62);
+    --_item-height: calc(var(--carousel-item-height) * 0.62);
   }
 }
 
-@media only screen and (max-width: 16rem) {
-  .gorilla-carousel-3d .carousel {
-    --_diameter: calc(var(--carousel-diameter) * 0.25);
-    --_item-width: calc(var(--carousel-item-width) * 0.25);
-    --_item-height: calc(var(--carousel-item-height) * 0.25);
-  }
-}
-
-.gorilla-carousel-3d .carousel .carousel-control-button {
-  --_width: var(--carousel-control-button-width);
-  --_height: var(--carousel-control-button-height);
-  z-index: 1;
-  width: var(--_width);
-  height: var(--_height);
-  background-color: rgb(var(--carousel-control-color-rgb));
-  opacity: 0.2;
-  transition: opacity var(--carousel-transition-duration) var(--carousel-transition-ease);
+.gorilla-carousel-3d .carousel-spin {
+  --_z: calc(var(--_radius) * -1);
   position: absolute;
-}
-
-.gorilla-carousel-3d .carousel .carousel-control-button:hover {
-  opacity: 0.4;
-}
-
-.gorilla-carousel-3d .carousel .carousel-control-button:has(input:checked) {
-  opacity: 0.8;
-}
-
-.gorilla-carousel-3d .carousel .carousel-control-button input {
-  -webkit-appearance: none;
-  appearance: none;
-  opacity: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  cursor: pointer;
-}
-
-.gorilla-carousel-3d .carousel .carousel-control-button.left {
-  clip-path: polygon(0% 50%, 100% 0%, 100% 100%);
-  top: calc(var(--_radius) - var(--_height) / 2);
-  left: 0;
-}
-
-.gorilla-carousel-3d .carousel:has(.carousel-control-button.left input:checked) {
-  --carousel-direction-animation-play-state: running;
-}
-
-.gorilla-carousel-3d .carousel .carousel-control-button.right {
-  clip-path: polygon(0% 0%, 100% 50%, 0% 100%);
-  top: calc(var(--_radius) - var(--_height) / 2);
-  right: 0;
-}
-
-.gorilla-carousel-3d .carousel:has(.carousel-control-button.right input:checked) {
-  --carousel-direction-animation-play-state: paused;
-}
-
-.gorilla-carousel-3d .carousel .carousel-rotation-direction {
-  --_direction-animation-play-state: var(--carousel-direction-animation-play-state);
-  --_z: calc(var(--_radius) * -1);
   transform: translateZ(var(--_z));
   transform-style: preserve-3d;
-  animation: gorilla-carousel-rotation-reverse calc(var(--carousel-animation-duration) / 2) reverse linear infinite var(--_direction-animation-play-state);
-  transition: all var(--carousel-transition-duration) var(--carousel-transition-ease);
-}
-
-@keyframes gorilla-carousel-rotation-reverse {
-  from {
-    transform: translateZ(var(--_z)) rotateY(0deg);
-  }
-  to {
-    transform: translateZ(var(--_z)) rotateY(360deg);
-  }
-}
-
-@keyframes gorilla-carousel-rotation-normal {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
+  will-change: transform;
+  transition: none;
 }
 
 .gorilla-carousel-3d .carousel .carousel-item-wrapper {
@@ -140,13 +64,7 @@
   height: inherit;
   list-style-type: none;
   position: relative;
-  animation: gorilla-carousel-rotation-normal var(--carousel-animation-duration) normal linear infinite var(--carousel-animation-play-state);
   transition: all var(--carousel-transition-duration) var(--carousel-transition-ease);
-}
-
-.gorilla-carousel-3d .carousel .carousel-rotation-direction:has(.carousel-item:hover) {
-  --carousel-animation-play-state: paused;
-  --_direction-animation-play-state: paused;
 }
 
 .gorilla-carousel-3d .carousel .carousel-item {
@@ -167,15 +85,15 @@
 }
 
 .gorilla-carousel-3d .carousel .carousel-item:nth-child(3n + 1) {
-  --carousel-item-glow-color-rgb: 255, 45, 120;
+  --carousel-item-glow-color-rgb: 251, 5, 247;
 }
 
 .gorilla-carousel-3d .carousel .carousel-item:nth-child(3n + 2) {
-  --carousel-item-glow-color-rgb: var(--gorilla-yellow-rgb-comma);
+  --carousel-item-glow-color-rgb: 245, 242, 29;
 }
 
 .gorilla-carousel-3d .carousel .carousel-item:nth-child(3n + 3) {
-  --carousel-item-glow-color-rgb: 0, 0, 255;
+  --carousel-item-glow-color-rgb: 128, 242, 15;
 }
 
 .gorilla-carousel-3d .carousel .carousel-item:hover {
@@ -243,6 +161,7 @@
   opacity: 0.5;
   transition: opacity var(--carousel-transition-duration) var(--carousel-transition-ease);
   position: absolute;
+  pointer-events: none;
 }
 
 .gorilla-carousel-3d .carousel .carousel-item-wrapper:has(.carousel-item:hover) .carousel-ground {

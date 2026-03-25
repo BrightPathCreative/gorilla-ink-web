@@ -1,26 +1,37 @@
-import { ShieldCheck, Sparkles, Users, Wrench } from "lucide-react";
 import { SectionDripBar } from "@/components/SectionDripBar";
+import {
+  IconEquipment,
+  IconPremiumDesign,
+  IconSafeComfort,
+  IconSkilledArtists,
+} from "@/components/icons/WhyChooseIcons";
 
-const points: { title: string; description: string; Icon: typeof Users }[] = [
+const points: {
+  title: string;
+  description: string;
+  Icon: typeof IconSkilledArtists;
+}[] = [
   {
     title: "Skilled tattoo artists",
-    description: "Experienced artists across realism, Japanese, fine line, and cover-ups — every piece backed by years on the needle.",
-    Icon: Users,
+    description:
+      "Experienced artists across realism, Japanese, fine line, and cover-ups — every piece backed by years on the needle.",
+    Icon: IconSkilledArtists,
   },
   {
     title: "Premium designs",
-    description: "Custom artwork tailored to your idea, placement, and skin — not one-size-fits-all flash unless you want it.",
-    Icon: Sparkles,
+    description:
+      "Custom artwork tailored to your idea, placement, and skin — not one-size-fits-all flash unless you want it.",
+    Icon: IconPremiumDesign,
   },
   {
     title: "Safe and comfortable",
     description: "Clean setup, clear aftercare, and a calm session so you can relax into the process.",
-    Icon: ShieldCheck,
+    Icon: IconSafeComfort,
   },
   {
     title: "High-quality equipment",
     description: "Professional machines, needles, and inks — maintained and chosen for consistent, lasting results.",
-    Icon: Wrench,
+    Icon: IconEquipment,
   },
 ];
 
@@ -48,8 +59,8 @@ export function WhyChooseUs() {
         <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {points.map(({ title, description, Icon }) => (
             <li key={title} className="gorilla-place-card p-6 hover:-translate-y-0.5">
-              <div className="flex h-11 w-11 items-center justify-center rounded-md border border-gorilla-lime/50 bg-gorilla-lime/10 text-gorilla-lime">
-                <Icon className="h-5 w-5" strokeWidth={2} aria-hidden />
+              <div className="flex h-12 w-12 items-center justify-center rounded-md border border-gorilla-lime/50 bg-gorilla-lime/10 text-gorilla-lime">
+                <Icon className="h-7 w-7" aria-hidden />
               </div>
               <h3 className="font-heading mt-4 text-xl tracking-wide text-white">{title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-[#c4c4c4]">{description}</p>

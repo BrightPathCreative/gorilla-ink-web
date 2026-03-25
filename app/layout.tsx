@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { archivoLogo, bebas, inter } from "./fonts";
-import { Navbar } from "@/components/Navbar";
-import { FloatingDock } from "@/components/FloatingDock";
-import { BackToTop } from "@/components/BackToTop";
+import { ClientShell } from "@/components/ClientShell";
 import { CustomCursor } from "@/components/CustomCursor";
 import { getSiteUrl } from "@/lib/site";
 
@@ -59,10 +57,7 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col bg-black font-sans text-white">
         <div className="site-noise pointer-events-none fixed inset-0 z-[5]" aria-hidden />
         <CustomCursor />
-        <Navbar />
-        <FloatingDock />
-        <BackToTop />
-        <div className="flex flex-1 flex-col pb-24 md:pb-28">{children}</div>
+        <ClientShell>{children}</ClientShell>
       </body>
     </html>
   );

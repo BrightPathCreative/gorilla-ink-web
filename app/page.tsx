@@ -3,6 +3,7 @@ import { ProofBar } from "@/components/ProofBar";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { TestimonialSection } from "@/components/TestimonialSection";
 import { StorySection } from "@/components/StorySection";
+import { StudioSpotlight } from "@/components/StudioSpotlight";
 import { Carousel3D } from "@/components/Carousel3D";
 import { ArtistGrid } from "@/components/ArtistGrid";
 import { GHLBooking } from "@/components/GHLBooking";
@@ -29,6 +30,9 @@ export default function Home() {
         </AnimatedDiv>
         <AnimatedDiv>
           <StorySection />
+        </AnimatedDiv>
+        <AnimatedDiv>
+          <StudioSpotlight />
         </AnimatedDiv>
         <AnimatedSection
           id="gallery"

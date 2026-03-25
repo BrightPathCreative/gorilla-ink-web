@@ -114,6 +114,7 @@ export function Footer() {
           target="_blank"
           rel="noopener noreferrer"
           className="text-gorilla-magenta underline-offset-4 hover:text-gorilla-lime hover:underline"
+          aria-label="Bright Path Creative — contact"
         >
           Bright Path Creative
         </a>

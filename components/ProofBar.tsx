@@ -48,22 +48,13 @@ export function ProofBar() {
   return (
     <section
       ref={sectionRef}
-      className="border-b border-white/10 bg-black px-6 py-2.5 md:px-12 md:py-3 lg:px-16"
+      className="border-b border-white/10 bg-black px-4 py-4 md:px-8 md:py-5"
       aria-label="Studio credentials"
     >
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 md:flex-row md:items-center md:justify-between md:gap-x-4 lg:gap-x-5">
-        <div className="flex w-full shrink-0 justify-center md:w-auto md:justify-start">
-          {/* eslint-disable-next-line @next/next/no-img-element -- crisp SVG wordmark */}
-          <img
-            src="/gorilla-ink-wordmark.svg"
-            alt=""
-            className="h-6 w-auto max-w-[min(240px,88vw)] object-contain object-center opacity-95 md:h-7"
-          />
-        </div>
-        <div
-          ref={rowRef}
-          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 md:justify-end md:gap-x-4 lg:gap-x-5"
-        >
+      <div
+        ref={rowRef}
+        className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-5 gap-y-4 md:gap-x-8 md:gap-y-4"
+      >
         <Link
           href={googleMapsSearchUrl}
           target="_blank"
@@ -117,7 +108,6 @@ export function ProofBar() {
               Artists
             </p>
           </div>
-        </div>
         </div>
       </div>
     </section>

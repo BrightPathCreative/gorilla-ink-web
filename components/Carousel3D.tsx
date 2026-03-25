@@ -2,10 +2,10 @@
 
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import "./carousel-3d.css";
 
-const NUM_ELEMENTS = 11;
+const NUM_ELEMENTS = 10;
 
 const showcaseItems: {
   image: string;
@@ -62,12 +62,6 @@ const showcaseItems: {
     description: "Composition planned for movement and aging.",
   },
   {
-    image: "/gallery/studio.jpg",
-    alt: "Tattoo session at Gorilla Ink studio",
-    caption: "In the chair",
-    description: "Clean setup and steady hands — Oakleigh studio floor.",
-  },
-  {
     image: "/gallery/2024-05-06.jpg",
     alt: "Recent tattoo work, Gorilla Ink",
     caption: "Recent work",
@@ -83,6 +77,56 @@ const showcaseItems: {
 
 export function Carousel3D() {
   const [open, setOpen] = useState<number | null>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const spinRef = useRef<HTMLDivElement>(null);
+  const translateZPx = useRef(-400);
+  const rotationRef = useRef(0);
+  const dragging = useRef(false);
+  const lastX = useRef(0);
+  const rafRef = useRef(0);
+  const [motionOk, setMotionOk] = useState(true);
+
+  useEffect(() => {
+    setMotionOk(!window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
+
+  const applyTransform = useCallback(() => {
+    const el = spinRef.current;
+    if (!el) return;
+    el.style.transform = `translateZ(${translateZPx.current}px) rotateY(${rotationRef.current}deg)`;
+  }, []);
+
+  useLayoutEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const syncZ = () => {
+      const w = carousel.offsetWidth;
+      translateZPx.current = -w / 2;
+      applyTransform();
+    };
+
+    syncZ();
+    const ro = new ResizeObserver(syncZ);
+    ro.observe(carousel);
+    return () => ro.disconnect();
+  }, [applyTransform]);
+
+  useEffect(() => {
+    if (!motionOk) return;
+    let last = performance.now();
+    const tick = (now: number) => {
+      const dt = Math.min(now - last, 48);
+      last = now;
+      if (!dragging.current) {
+        rotationRef.current += dt * 0.011;
+        applyTransform();
+      }
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [applyTransform, motionOk]);
 
   const close = useCallback(() => setOpen(null), []);
 
@@ -95,25 +139,52 @@ export function Carousel3D() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, close]);
 
+  const onPointerDown = (e: React.PointerEvent) => {
+    if (e.button !== 0) return;
+    if ((e.target as HTMLElement).closest("button")) return;
+    dragging.current = true;
+    lastX.current = e.clientX;
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging.current) return;
+    const dx = e.clientX - lastX.current;
+    lastX.current = e.clientX;
+    rotationRef.current += dx * 0.42;
+    applyTransform();
+  };
+
+  const onPointerUp = (e: React.PointerEvent) => {
+    dragging.current = false;
+    try {
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      /* ignore */
+    }
+  };
+
   return (
     <>
-      <div className="gorilla-carousel-3d flex w-full justify-center overflow-x-hidden py-2 md:py-4">
+      <div className="gorilla-carousel-3d flex w-full justify-center overflow-x-hidden py-3 md:py-6">
         <div
-          className="carousel relative mx-auto"
+          ref={carouselRef}
+          className="carousel relative mx-auto cursor-grab touch-pan-y active:cursor-grabbing"
           style={
             {
               "--_num-elements": NUM_ELEMENTS,
             } as CSSProperties
           }
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          onPointerLeave={(e) => {
+            if (dragging.current) onPointerUp(e);
+          }}
         >
-          <div className="carousel-control-button left">
-            <input type="radio" name="gorilla-carousel-direction" defaultChecked aria-label="Rotate carousel counter-clockwise" />
-          </div>
-          <div className="carousel-control-button right">
-            <input type="radio" name="gorilla-carousel-direction" aria-label="Rotate carousel clockwise" />
-          </div>
-          <div className="carousel-rotation-direction">
-            <ul className="carousel-item-wrapper m-0 p-0">
+          <div ref={spinRef} className="carousel-spin">
+            <ul className="carousel-item-wrapper m-0 list-none p-0">
               {showcaseItems.map((item, index) => (
                 <li
                   key={item.image}

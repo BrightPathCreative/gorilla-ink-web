@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ShieldFrame } from "@/components/ShieldFrame";
 import { SectionDripBar } from "@/components/SectionDripBar";
 
 export function StorySection() {
@@ -18,22 +17,27 @@ export function StorySection() {
         </div>
 
         <div className="mt-12 flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-12 xl:gap-14">
-          <figure className="mx-auto w-full max-w-[15rem] shrink-0 lg:mx-0 lg:w-[min(15rem,34%)] lg:max-w-[240px]">
-            <ShieldFrame variant="lime" className="w-full">
-              <div className="relative aspect-[4/5] w-full">
+          <figure className="relative mx-auto w-full max-w-[260px] shrink-0 lg:mx-0 lg:w-[min(260px,34%)]">
+            <div className="pointer-events-none absolute -inset-4 z-0 md:-inset-6" aria-hidden>
+              <div
+                className="absolute left-1/4 top-1/4 h-32 w-32 rounded-full bg-gorilla-magenta/25 blur-xl animate-story-blob md:h-40 md:w-40"
+              />
+              <div
+                className="absolute bottom-1/4 right-1/4 h-28 w-28 rounded-full bg-gorilla-lime/20 blur-xl animate-story-blob-delayed md:h-36 md:w-36"
+              />
+            </div>
+            <div className="relative z-10 overflow-hidden rounded-2xl ring-1 ring-white/15">
+              <div className="relative aspect-[3/4] w-full">
                 <Image
                   src="/mario.jpg"
                   alt="Marz Del Toro, owner and head artist of Gorilla Ink Tattoo Studio"
                   fill
                   className="object-cover object-[center_22%]"
-                  sizes="(max-width: 1024px) 240px, 240px"
+                  sizes="(max-width: 1024px) 260px, 260px"
                 />
-                <div
-                  className="pointer-events-none absolute inset-0 bg-black/35"
-                  aria-hidden
-                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" aria-hidden />
               </div>
-            </ShieldFrame>
+            </div>
             <figcaption className="mt-5 text-center lg:text-left">
               <span className="font-heading text-2xl tracking-wide text-white">Marz Del Toro</span>
               <span className="mt-1 block text-xs font-semibold uppercase tracking-[0.22em] text-white/50">
